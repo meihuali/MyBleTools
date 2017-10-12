@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"></View>
+
+    <RelativeLayout
+        android:layout_width="100dp"
+        android:layout_height="120dp">
+
+        <ImageView
+            android:scaleType="centerInside"
+            android:id="@+id/deviceImageView"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/test" />
+
+        <TextView
+            android:id="@+id/deviceName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="理疗仪"
+            android:textColor="#fff" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"></View>
+</LinearLayout>

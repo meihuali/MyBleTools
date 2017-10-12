@@ -1,0 +1,263 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context="com.example.yukunlin.physiotherapydevice.fragment.HistoryFragment">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/device_bg"/>
+
+    <RelativeLayout
+        android:id="@id/topBar"
+        android:layout_width="match_parent"
+        android:layout_height="55dp">
+
+        <ImageView
+            android:id="@id/back"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:src="@drawable/back"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="历史记录"
+            android:textColor="#fff"
+            android:textSize="20sp"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/smallTitle"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_below="@+id/recordLayout"
+        android:layout_marginTop="5dp"
+        android:background="#4fffffff"
+        android:gravity="bottom|center_horizontal"
+        android:text="使用记录的流水"
+        android:textColor="#ffffff">
+
+    </TextView>
+
+    <LinearLayout
+        android:id="@+id/titleLayout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/smallTitle"
+        android:background="#4fffffff"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingRight="8dp"
+            android:text="开始时间"
+            android:textColor="#fff"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="持续时间"
+            android:textColor="#fff"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="红外线"
+            android:textColor="#fff"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="浓度"
+            android:textColor="#fff"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="模式"
+            android:textColor="#fff"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="功耗"
+            android:textColor="#fff"
+            android:textSize="16sp"/>
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/titleLayout"
+        android:dividerHeight="2dp">
+
+    </ListView>
+
+    <!--<TextView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="50dp"-->
+    <!--android:layout_alignParentBottom="true"-->
+    <!--android:gravity="center"-->
+    <!--android:text="只显示最近5条记录"-->
+    <!--android:textColor="#ffffff"-->
+    <!--android:textSize="18sp" />-->
+
+    <LinearLayout
+        android:id="@+id/recordLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/topBar"
+        android:orientation="vertical"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="本月累计使用次数："
+                android:textColor="@color/text_white"/>
+            <TextView
+                android:id="@+id/usage_monthly"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="50次"
+                android:textColor="@color/text_white"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="累计使用次数："
+                android:textColor="#ffffff"/>
+            <TextView
+                android:id="@+id/usage_total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="100次"
+                android:textColor="#ffffff"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="平均每天使用次数：  "
+                android:textColor="#ffffff"/>
+            <TextView
+                android:id="@+id/usage_average"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3次"
+                android:textColor="#ffffff"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="最多泡脚模式：   "
+                android:textColor="#ffffff"/>
+            <TextView
+                android:id="@+id/popmode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="女人"
+                android:textColor="#ffffff"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="本月耗电量：         "
+                android:textColor="#ffffff"/>
+            <TextView
+                android:id="@+id/power"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="20KW.h"
+                android:textColor="#ffffff"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="使用总天数：      "
+                android:textColor="#ffffff"/>
+            <TextView
+                android:id="@+id/usage_days"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="100次"
+                android:textColor="#ffffff"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="购买日期：   "
+                android:textColor="#ffffff"/>
+            <TextView
+                android:id="@+id/date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2017-1-10"
+                android:textColor="#ffffff"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</RelativeLayout>

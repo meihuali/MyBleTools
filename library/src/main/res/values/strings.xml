@@ -1,0 +1,50 @@
+<resources>
+    <string name="app_name">中民福祉</string>
+    <string name="title_activity_base">BaseActivity</string>
+    <string name="exit_comfirm">再按一次退出应用</string>
+    <string name="scan_text">将二维码放入框内, 即可自动扫描</string>
+    <string name="ble_error">您的手机不支持蓝牙ble</string>
+    <string name="connect_error">设备连接失败</string>
+    <string name="connect_success">设备连接成功</string>
+    <string name="work_stop">停止工作</string>
+    <string name="work_stop_en">Work Stop</string>
+    <string name="remaining">剩余时间：\r\nRemaining:</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="about">中民福祉集团是一家集投资、医疗、药品、器械、科技、传媒为一体的大型集团。中民福祉集团总部设在首都北京，投资领域遍布全国，旗下拥有6家全资子公司。中民福祉集团首倡的以民众健康为己任，共同进军具有广阔前景的关系老百姓衣食住行的民生行业，从而带动国家建设、发展、教育、扶贫济困、就业、土特产品销售、招商引资、旅游文化交流等方面全面发展，为人民大众带来更多的就业机会，带动国家经济、税收增长。</string>
+    <string name="company">中民普健国际贸易（北京）有限公司</string>
+    <string name="address">地址：北京市朝阳区新源里琨莎中心三座</string>
+    <string name="telephone">电话：400-8191-288</string>
+    <string name="website">网址：www.zmpjguoji.com</string>
+    <string name="name_liliaoyi">福祉理疗仪</string>
+    <string name="can_not_find_device">未找到设备，请再试一次</string>
+    <string name="clear_success">清理成功</string>
+    <string name="network_error">访问网络出错</string>
+    <string name="warning">警告！！！\r\n请连接工作臂！</string>
+    <string name="warning_en">Warning！！！\r\nPlease Connect\r\nthe Working arm！</string>
+    <string name="warning_water">警告！！！\r\n浓度过高\r\r请换水！</string>
+    <string name="warning_water_en">Warning！！！\r\nConcn to large\r\nChange Water！</string>
+    <string name="concentration">测试浓度\r\n concentration</string>
+    <string name="man">选择：男人\r\nChoose: Man</string>
+    <string name="woman">选择：女人\r\nChoose: Woman</string>
+    <string name="children">选择：小孩\r\nChoose: Children</string>
+    <string name="edit">编辑</string>
+    <string name="done">完成</string>
+    <string name="save_success">保存成功</string>
+    <string name="delete_success">删除成功</string>
+    <string name="login">正在登录...</string>
+    <string name="input_number">请输入手机号码</string>
+    <string name="get_code_ing">验证码获取中</string>
+    <string name="register_failed">注册失败</string>
+    <string name="input_code">请输入验证码</string>
+    <string name="device_name">福祉理疗仪</string>
+    <string name="already_add">设备已添加</string>
+    <string name="add_success">已成功添加设备</string>
+    <string name="content_can_not_empty">内容不能为空</string>
+    <string name="commit_success">提交成功</string>
+    <string name="commit_failure">提交失败</string>
+    <string name="check_failed">验证失败</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

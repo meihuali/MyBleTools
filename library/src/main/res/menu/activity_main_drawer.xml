@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group
+        android:id="@+id/group"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/setting"
+            android:icon="@drawable/setting"
+            android:title="软件设置" />
+        <item
+            android:id="@+id/personalInfo"
+            android:icon="@drawable/personal_info"
+            android:title="个人信息" />
+        <item
+            android:id="@+id/userGuide"
+            android:icon="@drawable/guide"
+            android:title="使用手册" />
+
+        <item
+            android:id="@+id/baojian"
+            android:icon="@drawable/baojian"
+            android:title="氢气保健" />
+
+        <item
+            android:id="@+id/feedback"
+            android:icon="@drawable/feedback"
+            android:title="意见反馈" />
+        <item
+            android:id="@+id/clearData"
+            android:icon="@drawable/clear"
+            android:title="清理缓存" />
+        <item
+            android:id="@+id/about"
+            android:icon="@drawable/about"
+            android:title="关于我们" />
+
+    </group>
+
+    <!--<item android:title="Communicate">-->
+    <!--<menu>-->
+    <!--<item-->
+    <!--android:id="@+id/nav_share"-->
+    <!--android:icon="@drawable/ic_menu_share"-->
+    <!--android:title="Share" />-->
+    <!--<item-->
+    <!--android:id="@+id/nav_send"-->
+    <!--android:icon="@drawable/ic_menu_send"-->
+    <!--android:title="Send" />-->
+    <!--</menu>-->
+    <!--</item>-->
+
+</menu>

@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_device_control"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.yukunlin.physiotherapydevice.activity.DeviceControlActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/device_bg" />　
+
+
+    <ImageView
+        android:id="@+id/backImageView"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/back" />
+
+    <ImageView
+        android:id="@+id/history"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/history" />
+
+
+    <ImageView
+        android:id="@+id/deviceBackground"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginRight="15dp"
+        android:src="@drawable/logo" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true">
+
+            <ImageView
+                android:id="@+id/arc"
+                android:layout_width="239dp"
+                android:layout_height="440dp"
+                android:layout_marginTop="35dp"
+                android:src="@drawable/arc" />
+
+            <ImageView
+                android:id="@+id/footbath"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/choose_btn"
+                android:layout_marginTop="50dp"
+                android:src="@drawable/test"
+                android:layout_marginLeft="25dp"
+                android:visibility="visible" />
+
+            <LinearLayout
+                android:id="@+id/resultLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="150dp"
+                android:orientation="vertical"
+                android:paddingLeft="15dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="浓度："
+                    android:textColor="#fff"
+                    android:textSize="20sp"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/concentration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0.0%"
+                    android:textColor="#fff"
+                    android:textSize="20sp"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/chooseMode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="选择：女人\nChoose: Woman"
+                    android:textColor="#fff" />
+
+                <TextView
+                    android:id="@+id/timeTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="剩余时间：\nRemaining:"
+                    android:textColor="#fff" />
+
+                <TextView
+
+                    android:id="@+id/time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="29:59"
+                    android:textColor="#fff"
+                    android:textSize="30sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/warningLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="150dp"
+                android:orientation="vertical"
+                android:paddingLeft="15dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/hintTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:lineSpacingExtra="8dp"
+                    android:text="警告！！！\n浓度过高\n请换水！"
+                    android:textColor="#fff"
+                    android:textSize="22sp"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/hintEN"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:lineSpacingExtra="8dp"
+                    android:text="Warning！！！\nConcn to large\nChange Water！"
+                    android:textColor="#ffffff"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/man"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:layout_marginLeft="-20dp"
+                android:layout_marginTop="110dp"
+                android:src="@drawable/man_selected"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/woman"
+                android:layout_width="125dp"
+                android:layout_height="125dp"
+                android:layout_marginLeft="-15dp"
+                android:layout_marginTop="270dp"
+                android:src="@drawable/woman_un_select"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/children"
+                android:layout_width="125dp"
+                android:layout_height="125dp"
+                android:layout_marginLeft="60dp"
+                android:layout_marginTop="190dp"
+                android:src="@drawable/children_un_select"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/titleTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="200dp"
+                android:text="测试浓度\r\nnconcentration"
+                android:textColor="#fff"
+                android:textSize="20sp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/contentTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/titleTextView"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="20dp"
+                android:text="4000ppb"
+                android:textColor="#fff"
+                android:textSize="25sp"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/concn_btn"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginLeft="70dp"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/concn_un_select" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="40dp"
+                android:layout_toRightOf="@+id/concn_btn"
+                android:text="Concn"
+                android:textColor="#fff"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:id="@+id/choose_btn"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_below="@+id/concn_btn"
+                android:layout_marginLeft="150dp"
+                android:src="@drawable/choose_un_select" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/concn_btn"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="20dp"
+                android:layout_toRightOf="@+id/choose_btn"
+                android:text="Choose"
+                android:textColor="#fff"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:id="@+id/light_btn"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_below="@+id/choose_btn"
+                android:layout_marginLeft="205dp"
+                android:layout_marginTop="40dp"
+                android:src="@drawable/light_un_select" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/choose_btn"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="60dp"
+                android:layout_toRightOf="@+id/switch_btn"
+                android:text="FIR"
+                android:textColor="#fff"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:id="@+id/switch_btn"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_below="@+id/light_btn"
+                android:layout_marginLeft="200dp"
+                android:layout_marginTop="50dp"
+                android:src="@drawable/switch_un_select" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/light_btn"
+                android:layout_marginTop="70dp"
+                android:layout_toEndOf="@+id/switch_btn"
+                android:layout_toRightOf="@+id/switch_btn"
+                android:text="On/Off"
+                android:textColor="#fff"
+                android:textSize="16sp" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

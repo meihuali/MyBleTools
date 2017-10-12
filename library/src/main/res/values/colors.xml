@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+
+    <color name="find_friend_sub_font_color">#808080</color>
+    <color name="main_font_color">#111111</color>
+    <color name="main_hint_color">#cccccc</color>
+    <color name="main_color">#666666</color>
+    <color name="brownishGrey">#666666</color>
+    <color name="main_hint_color2">#aaaaaa</color>
+    <color name="date_font_color">#cccccc</color>
+    <color name="date_font_color2">#aaaaaa</color>
+    <color name="light_grey">#cecece</color>
+    <color name="red">#cd400f</color>
+    <color name="nav_text_red">#e84417</color>
+    <color name="gray">#9c9c9c</color>
+    <color name="blue">#2b86c0</color>
+    <color name="item_color">#5189BB</color>
+    <color name="new_blue">#50719b</color>
+    <color name="newBlue">#50719b</color>
+    <color name="result_view">#b0000000</color>
+    <color name="viewfinder_mask">#60000000</color>
+    <color name="possible_result_points">#c0ffff00</color>
+    <color name="device_control">#477d9c</color>
+    <color name="menu_blue">#5189BB</color>
+    <color name="main_blue">#69A2D3</color>
+    <color name="text_white">#fff</color>
+</resources>

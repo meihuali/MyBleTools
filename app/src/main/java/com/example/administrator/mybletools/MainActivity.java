@@ -19,6 +19,10 @@ import com.example.yukunlin.physiotherapydevice.module.Device;
 import com.inuker.bluetooth.library.mysearchdivce.BleConfig;
 import com.inuker.bluetooth.library.mysearchdivce.MySearchDivce;
 import com.inuker.bluetooth.library.utils.L;
+import com.yanzhenjie.permission.AndPermission;
+import com.yanzhenjie.permission.PermissionListener;
+import com.yanzhenjie.permission.Rationale;
+import com.yanzhenjie.permission.RationaleListener;
 
 import java.util.List;
 
@@ -26,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
     private BluetoothAdapter mBluetoothAdapter;
     private final static int REQUEST_CODE_PHONE_STATUS = 102;
     private final static int REQUEST_CODE_BLUETOOTH = 101;
+    private static final int REQUEST_CODE_PERMISSION_SD = 100;
+    private static final int REQUEST_CODE_SETTING = 300;
     private RecyclerView mRecyclerView;
     private HistoricalAdapter historicalAdapter;
     private List<Device> mlist;
@@ -36,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initPermission();
-        initBluetooth();
+        // initBluetooth();
         initAdapter();
         initConnectDivce();
 
@@ -47,9 +53,6 @@ public class MainActivity extends AppCompatActivity {
     *  搜索设备并且 设置adapter
     * */
     private void initAdapter() {
-        //这句话是搜索蓝牙设备
-        mlist = MySearchDivce.startSearchDevice(this);
-        L.e("搜到的设备 "+mlist.size());
         //初始化recycleView
         mRecyclerView = (RecyclerView) findViewById(R.id.mRecyclerView);
         mRecyclerView.setHasFixedSize(true);
@@ -72,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(BaseQuickAdapter baseQuickAdapter, View view, int i) {
                 for (int j = 0; j < mlist.size(); j++) {
                     if (j == i) {
-                       macaddress =   mlist.get(j).getMacAddress();
+                        macaddress =   mlist.get(j).getMacAddress();
                     }
                 }
                 Toast.makeText(getApplicationContext(),"测试 "+i ,Toast.LENGTH_SHORT).show();
@@ -87,20 +90,84 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * 获取手机状态权限
+     * 获取手机蓝牙权限
      */
     private void initPermission() {
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE)
-                != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
-                this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_PHONE_STATE}, REQUEST_CODE_PHONE_STATUS);
-        }
+        // 申请单个权限。
+        AndPermission.with(this)
+                .requestCode(REQUEST_CODE_PERMISSION_SD)
+                .permission(Manifest.permission.ACCESS_COARSE_LOCATION)
+                .callback(permissionListener)
+                // rationale作用是：用户拒绝一次权限，再次申请时先征求用户同意，再打开授权对话框；
+                // 这样避免用户勾选不再提示，导致以后无法申请权限。
+                // 你也可以不设置。
+                .rationale(new RationaleListener() {
+                    @Override
+                    public void showRequestPermissionRationale(int requestCode, Rationale rationale) {
+                        // 这里的对话框可以自定义，只要调用rationale.resume()就可以继续申请。
+                        AndPermission.rationaleDialog(MainActivity.this, rationale).
+                                show();
+                    }
+                })
+                .start();
     }
+
+    /**
+     * 6.0动态授权回调监听。
+     */
+    private PermissionListener permissionListener = new PermissionListener() {
+        @Override
+        public void onSucceed(int requestCode, @NonNull List<String> grantPermissions) {
+            switch (requestCode) {
+                case REQUEST_CODE_PERMISSION_SD: {
+                    Toast.makeText(MainActivity.this, "授权成功", Toast.LENGTH_SHORT).show();
+                    mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+                    if (mBluetoothAdapter == null) {
+                        Toast.makeText(getApplicationContext(),"本地蓝牙不可用",Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    if (mBluetoothAdapter.isEnabled()) {
+                        //表示蓝牙开启
+                        //这句话是搜索蓝牙设备
+                        //这里不对     如果用户没有授权或者还没有打开蓝牙  这个方法是扫不到的   要在打开蓝牙并授权之后去扫描
+                        mlist = MySearchDivce.startSearchDevice(MainActivity.this);
+                        L.e("搜到的设备 "+mlist.size());
+                    } else {
+                        mBluetoothAdapter.enable();  //打开蓝牙，
+                        mlist = MySearchDivce.startSearchDevice(MainActivity.this);
+                        L.e("搜到的设备 "+mlist.size());
+                    }
+
+
+                    break;
+                }
+            }
+        }
+
+        @Override
+        public void onFailed(int requestCode, @NonNull List<String> deniedPermissions) {
+            switch (requestCode) {
+                case REQUEST_CODE_PERMISSION_SD: {
+                    Toast.makeText(MainActivity.this, "授权失败", Toast.LENGTH_SHORT).show();
+                    break;
+                }
+            }
+
+            // 用户否勾选了不再提示并且拒绝了权限，那么提示用户到设置中授权。
+            if (AndPermission.hasAlwaysDeniedPermission(MainActivity.this, deniedPermissions)) {
+                // 第一种：用默认的提示语。
+                AndPermission.defaultSettingDialog(MainActivity.this, REQUEST_CODE_SETTING).show();
+
+
+            }
+
+        }
+    };
 
     /**
      * 打开蓝牙
      */
-    private void initBluetooth() {
+/*    private void initBluetooth() {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH)
                 != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
                 this, Manifest.permission.BLUETOOTH) != PackageManager.PERMISSION_GRANTED) {
@@ -121,13 +188,13 @@ public class MainActivity extends AppCompatActivity {
                 mBluetoothAdapter.enable();
             }
         }
-    }
+    }*/
 
     /**
      * 用户同意授权后的操作
      *
      */
-    @Override
+/*    @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         switch (requestCode) {
@@ -140,14 +207,13 @@ public class MainActivity extends AppCompatActivity {
                             mBluetoothAdapter.enable();
                         }
                     }
-
                 } else {
                     //用户拒绝授权
                     Toast.makeText(getApplicationContext(),"您已经拒绝蓝牙权限请在设置中打开蓝牙权限",Toast.LENGTH_SHORT).show();
                 }
                 break;
         }
-    }
+    }*/
 
     @Override
     protected void onResume() {

@@ -31,5 +31,5 @@ dependencies {
 
     compile project(':library')
     compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30'
-
+    compile 'com.yanzhenjie:permission:1.1.0'
 }

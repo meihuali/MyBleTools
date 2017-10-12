@@ -12,12 +12,14 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.example.administrator.mybletools.adapter.HistoricalAdapter;
 import com.example.yukunlin.physiotherapydevice.module.Device;
+import com.inuker.bluetooth.library.BluetoothClient;
 import com.inuker.bluetooth.library.mysearchdivce.BleConfig;
 import com.inuker.bluetooth.library.mysearchdivce.MySearchDivce;
 import com.inuker.bluetooth.library.mysearchdivce.SearchRelust;
@@ -27,9 +29,10 @@ import com.yanzhenjie.permission.PermissionListener;
 import com.yanzhenjie.permission.Rationale;
 import com.yanzhenjie.permission.RationaleListener;
 
+import java.security.cert.CertPathValidatorException;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private BluetoothAdapter mBluetoothAdapter;
     private final static int REQUEST_CODE_PHONE_STATUS = 102;
     private final static int REQUEST_CODE_BLUETOOTH = 101;
@@ -40,15 +43,20 @@ public class MainActivity extends AppCompatActivity {
     private HistoricalAdapter historicalAdapter;
     private List<Device> mlist;
     private String macaddress;
-
+    private Button btn_witre;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        initViews();
         initPermission();
 
     }
 
+    private void initViews() {
+        btn_witre = (Button) findViewById(R.id.btn_witre);
+        btn_witre.setOnClickListener(this);
+    }
 
 
     /*
@@ -73,7 +81,6 @@ public class MainActivity extends AppCompatActivity {
     *  连接设备
     * */
     private void initConnectDivce(final List<Device> mlist) {
-
         historicalAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter baseQuickAdapter, View view, int i) {
@@ -87,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
                 BleConfig.setUuidServiceText("0000ffe0-0000-1000-8000-00805f9b34fb");
                 //设置写入数据的 特征
                 BleConfig.setUuidCharacteristicText("0000ffe1-0000-1000-8000-00805f9b34fb");
-
+                // 这句话就是核心连接蓝牙设备的代码
                 MySearchDivce.ConnectDivce(getApplicationContext(),macaddress);
             }
         });
@@ -144,6 +151,7 @@ public class MainActivity extends AppCompatActivity {
                             public void searchRelust(List<Device> mlist) {
                                 L.e("搜到的设备 "+mlist.size());
                                 //设置adapter
+
                                 initAdapter(mlist);
                             }
                         });
@@ -209,8 +217,16 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onResume() {
-        // mClient = new BluetoothClient(DeviceActivity.this);
+     //   BluetoothClient mClient = new BluetoothClient(DeviceActivity.this);
         super.onResume();
     }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.btn_witre:
+                break;
+        }
+
+    }
 }

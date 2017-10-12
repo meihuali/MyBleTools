@@ -32,6 +32,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent" />
                 <Button
+                    android:id="@+id/btn_witre"
                     android:layout_marginLeft="10dp"
                     android:text="写入数据"
                     android:layout_width="wrap_content"

@@ -70,5 +70,23 @@ public class BleConfig {
 
 
 
+    @Retention(RetentionPolicy.SOURCE)
+    public @interface BleStatus{
+        int CONNECTED = 2505;
+        int CONNECTING = 2504;
+        int DISCONNECT = 2503;
+        int ConnectionChanged = 2511;
+        int ServicesDiscovered = 2512;
+        int Read = 2513;
+        int Write = 2514;
+        int Changed = 2515;
+        int DescriptorWriter = 2516;
+        int DescriptorRead = 2517;
+        int Start = 2518;
+        int Stop = 2519;
+        int ConnectTimeOut = 2510;
+        int OnReady = 2520;
+    }
+
 
 }

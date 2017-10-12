@@ -1,10 +1,15 @@
 package com.inuker.bluetooth.library.mysearchdivce;
 
+import android.app.Activity;
+import android.bluetooth.BluetoothAdapter;
+import android.content.Intent;
 import android.text.TextUtils;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.util.UUID;
+
+import static com.inuker.bluetooth.library.mysearchdivce.MySearchDivce.REQUEST_ENABLE_BT;
 
 /**
  * 项目名：MyBleTools
@@ -61,6 +66,7 @@ public class BleConfig {
     public static UUID getUuidCharacteristic(){
         return UUID_CHARACTERISTIC;
     }
+
 
 
 

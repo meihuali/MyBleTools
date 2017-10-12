@@ -2,13 +2,14 @@ package com.inuker.bluetooth.library.mysearchdivce;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.widget.Toast;
 
 import com.example.yukunlin.physiotherapydevice.R;
 import com.example.yukunlin.physiotherapydevice.module.Device;
-import com.example.yukunlin.physiotherapydevice.utils.DateUtil;
 import com.inuker.bluetooth.library.BluetoothClient;
 import com.inuker.bluetooth.library.Constants;
 import com.inuker.bluetooth.library.connect.listener.BleConnectStatusListener;
@@ -49,6 +50,19 @@ public class MySearchDivce {
     private static int ble_max = 20;
     private static String sumWirte;
     private static String MacAddrsssa;
+    public static final int REQUEST_ENABLE_BT = 1;
+
+
+    static onDivceListenr onDivceListenr;
+    private static BluetoothAdapter mBluetoothAdapter;
+
+    public  interface onDivceListenr{
+        void searchRelust(List<Device> mlist);
+    }
+
+    public static void getSearchDevices(onDivceListenr listenr) {
+        onDivceListenr = listenr;
+    }
 
 
     /**
@@ -84,6 +98,10 @@ public class MySearchDivce {
                 progressDialog.dismiss();
                 mClient.stopSearch();
                 startSearchDevice.add(newDevice);
+                L.e("设备数量 "+startSearchDevice.size());
+                if (onDivceListenr != null) {
+                    onDivceListenr.searchRelust(startSearchDevice);
+                }
             }
 
             @Override
@@ -109,7 +127,7 @@ public class MySearchDivce {
     *  这里是连接设备
     * */
     public static void ConnectDivce(Context context,String macaddrsss) {
-          MacAddrsssa = macaddrsss;
+        MacAddrsssa = macaddrsss;
         bluetoothClient = new BluetoothClient(context);
         BleConnectOptions options = new BleConnectOptions.Builder()
                 .setConnectRetry(3)   // 连接如果失败重试3次
@@ -242,6 +260,8 @@ public class MySearchDivce {
                     }
                 });
     }
+
+
 
 
 

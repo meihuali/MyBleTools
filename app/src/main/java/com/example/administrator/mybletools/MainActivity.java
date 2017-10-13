@@ -44,13 +44,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private List<Device> mlist;
     private String macaddress;
     private Button btn_witre;
+    private int connectState;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initViews();
         initPermission();
+        initConnectstate();
+    }
 
+    /*
+    * 这个方法的含义是从库中回调 连接的状态 是否还正在 连着的 看有没有断开
+    * */
+    private void initConnectstate() {
+        MySearchDivce.getConnectState(new MySearchDivce.onConnectState() {
+            @Override
+            public void connectstate(int state) {
+                 connectState = state;
+//                if (state == 16) {
+//                    Toast.makeText(getApplicationContext(), "连接成功", Toast.LENGTH_SHORT).show();
+//                } else {
+//                    Toast.makeText(getApplicationContext(), "连接失败", Toast.LENGTH_SHORT).show();
+//                }
+            }
+        });
     }
 
     private void initViews() {
@@ -225,6 +244,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_witre:
+                if (connectState == 16) {
+                    Toast.makeText(getApplicationContext(), "数据写入成功了呀", Toast.LENGTH_SHORT).show();
+                    MySearchDivce.getStatus("这里是您需要写入的数据");
+                } else {
+                    Toast.makeText(getApplicationContext(), "数据写入失败蓝牙连接断开了", Toast.LENGTH_SHORT).show();
+                }
+
                 break;
         }
 

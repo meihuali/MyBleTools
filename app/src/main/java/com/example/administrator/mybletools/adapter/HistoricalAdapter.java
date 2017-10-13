@@ -7,6 +7,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.example.administrator.mybletools.R;
 import com.example.yukunlin.physiotherapydevice.module.Device;
+import com.inuker.bluetooth.library.mysearchdivce.MySearchDivce;
 
 import java.util.List;
 
@@ -25,12 +26,11 @@ public class HistoricalAdapter extends BaseQuickAdapter<Device,BaseViewHolder> {
     }
 
     @Override
-    protected void convert(BaseViewHolder baseViewHolder, Device device) {
+    protected void convert(final BaseViewHolder baseViewHolder, Device device) {
         // 设置蓝牙名称
         baseViewHolder.setText(R.id.tv_BleName,device.getName());
         //设置蓝牙MAC 地址
         baseViewHolder.setText(R.id.tv_BleAddress,device.getMacAddress());
-        //设置蓝牙 连接状态
 
     }
 }

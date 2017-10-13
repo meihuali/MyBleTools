@@ -51,18 +51,27 @@ public class MySearchDivce {
     private static String sumWirte;
     private static String MacAddrsssa;
     public static final int REQUEST_ENABLE_BT = 1;
-
-
-    static onDivceListenr onDivceListenr;
     private static BluetoothAdapter mBluetoothAdapter;
 
+    static onDivceListenr onDivceListenr;
     public  interface onDivceListenr{
         void searchRelust(List<Device> mlist);
     }
-
     public static void getSearchDevices(onDivceListenr listenr) {
         onDivceListenr = listenr;
     }
+
+    /*
+    * 下面的接口回调是获取 连接状态的监听回调给activity
+    * */
+    static onConnectState onConnectState;
+    public interface onConnectState{
+        void  connectstate(int state);
+    }
+    public static void getConnectState(onConnectState ConnectStates) {
+        onConnectState = ConnectStates;
+    }
+
 
 
     /**
@@ -156,12 +165,16 @@ public class MySearchDivce {
     private static BleConnectStatusListener bleConnectStatusListener = new BleConnectStatusListener() {
         @Override
         public void onConnectStatusChanged(String mac, int status) {
+            if (onConnectState != null) {
+                onConnectState.connectstate(status);
+            }
             //这里是 连接蓝牙成功
             if (status == STATUS_CONNECTED) {
                 connected = true;
                 Toast.makeText(activity2, R.string.connect_success, Toast.LENGTH_SHORT).show();
                 //连接成功后写入数据
-                getStatus();
+                String url = "1";
+                getStatus(url);
 
 
             } else if (status == STATUS_DISCONNECTED) {
@@ -189,7 +202,7 @@ public class MySearchDivce {
     /*
     *  这个是写入数据
     * */
-    private static void getStatus() {
+    public static void getStatus(String writeText) {
         StringBuilder strapp = new StringBuilder();
         //获取系统时间
         //    String str2 = DateUtil.getCurrentTime() + "\r\n";
